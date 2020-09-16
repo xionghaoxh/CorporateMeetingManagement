@@ -2,31 +2,31 @@ var layer;
 layui.use('layer', function () {
     layer = layui.layer;
 });
-layui.use([ 'table', 'treetable'], function () {
+layui.use(['table', 'treetable'], function () {
     var permTreetable = layui.treetable;
     var permTable = layui.table;
     // 渲染表格
     var renderTable = function () {
         //layer.load(2);
         permTreetable.render({
-            id:'permTable',
+            id: 'permTable',
             treeColIndex: 1,
             treeSpid: -1,
             treeIdName: 'id',
             treePidName: 'pid',
-            height:'750px',
+            height: '750px',
             treeDefaultClose: false,
             treeLinkage: false,
             elem: '#permTreeTable',
             url: '/v1/api/sys/perm/permTreeTable',
             page: false,
             cols: [[
-                {type: 'numbers',title:'序号',singleLine:true},
-                {field: 'name', title: '名称',singleLine:true},
-                {field: 'permission', title: '权限标识',singleLine:true},
-                {field: 'url', title: '路径',singleLine:true},
+                {type: 'numbers', title: '序号', singleLine: true},
+                {field: 'name', title: '名称', singleLine: true},
+                {field: 'permission', title: '权限标识', singleLine: true},
+                {field: 'url', title: '路径', singleLine: true},
                 {
-                    field: 'resourceType', title: '类型', align: 'center',singleLine:true, templet: function (data) {
+                    field: 'resourceType', title: '类型', align: 'center', singleLine: true, templet: function (data) {
                         if (data.resourceType == -1) {//菜单
                             return '<span class="layui-badge layui-bg-blue">目录</span>'
                         } else if (data.resourceType == 0) {//按钮
@@ -37,10 +37,10 @@ layui.use([ 'table', 'treetable'], function () {
                     }
                 },
                 {
-                    field: 'disabled', title: '是否禁用', align: 'center',singleLine:true, templet: function (data) {
-                        if (data.disabled){
+                    field: 'disabled', title: '是否禁用', align: 'center', singleLine: true, templet: function (data) {
+                        if (data.disabled) {
                             return '<span class="layui-badge layui-bg-red">是</span>'
-                        }else{
+                        } else {
                             return '<span class="layui-badge layui-bg-green">否</span>'
                         }
                     }
@@ -124,6 +124,7 @@ layui.use([ 'table', 'treetable'], function () {
         renderTable();
     });
 });
+
 /**
  * 打开新增权限弹框
  */
@@ -149,7 +150,7 @@ function submitPermDataForm() {
         dataType: 'json',
         success: function (data) {
             layer.msg(data.mag);
-            if (data.code==0){
+            if (data.code == 0) {
                 var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                 //关闭layer弹窗之后重新加载layui表格
                 parent.layer.close(index);
@@ -171,7 +172,7 @@ function submitEditPermForm() {
         dataType: 'json',
         success: function (data) {
             layer.msg(data.mag);
-            if (data.code==0){
+            if (data.code == 0) {
                 var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                 //关闭layer弹窗之后重新加载layui表格
                 parent.layer.close(index);
@@ -185,9 +186,9 @@ function submitEditPermForm() {
  * 选择权限界面
  */
 function selectPerm() {
-    var permData={};
-    var pidInput=$('#pid');
-    var nameInput=$('input[name=pid]');
+    var permData = {};
+    var pidInput = $('#pid');
+    var nameInput = $('input[name=pid]');
     var index = layer.open({
         type: 1,
         title: false,
@@ -204,11 +205,11 @@ function selectPerm() {
                     elem: '#permTree' //默认是点击节点可进行收缩
                     , data: [treeData]
                     //, accordion: true
-                    ,spread:true
-                    ,showLine:false
+                    , spread: true
+                    , showLine: false
                     , click: function (obj) {
 
-                        permData={title:obj.data.title,id:obj.data.id};
+                        permData = {title: obj.data.title, id: obj.data.id};
                         layer.close(index);
                     }
                 })

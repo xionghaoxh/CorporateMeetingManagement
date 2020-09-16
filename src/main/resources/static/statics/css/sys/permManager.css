@@ -1,4 +1,4 @@
-.selectPermBtn{
+.selectPermBtn {
     float: right;
     position: absolute;
     width: 100px;
@@ -6,13 +6,15 @@
     right: 15px;
 }
 
-.selectPermArea{
-   /* background-color: #D0D0D0 !important;*/
+.selectPermArea {
+    /* background-color: #D0D0D0 !important;*/
 }
-.layui-tree-entry{
+
+.layui-tree-entry {
     height: auto;
 }
-.assPermTree{
+
+.assPermTree {
     padding-top: 20px;
     height: 400px;
 }

@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-bottom">
                         <div class="form-group">
-                            <input type="text" name="username" placeholder="用户名"  id="username"      class="form-control">
+                            <input type="text" name="username" placeholder="用户名" id="username" class="form-control" >
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" placeholder="密码" id="password" class="form-control">
@@ -80,24 +80,24 @@
          });
      }*/
 
-    function login(){
+    function login() {
 
         $.ajax({
-           url:'/login/doLogin',
-           type:'post',
-           data:$("#loginForm").serialize(),
-           dataType:'json',
-            success:function (data) {
-                if (null!=data && data.code===0){
+            url: '/login/doLogin',
+            type: 'post',
+            data: $("#loginForm").serialize(),
+            dataType: 'json',
+            success: function (data) {
+                if (null != data && data.code === 0) {
                     layer.msg(data.msg);
-                    var menus=data.data;
-                    var id=data.data[0].permission.substr(data.data[0].permission.lastIndexOf('.')+1);
-                    localStorage.setItem("menus",JSON.stringify(menus));
-                    localStorage.setItem("check",id);
-                    location.href=data.data[0].url;
-                }else if (data.code===1){
+                    var menus = data.data;
+                    var id = data.data[0].permission.substr(data.data[0].permission.lastIndexOf('.') + 1);
+                    localStorage.setItem("menus", JSON.stringify(menus));
+                    localStorage.setItem("check", id);
+                    location.href = data.data[0].url;
+                } else if (data.code === 1) {
                     layer.msg(data.msg);
-                }else {
+                } else {
                     layer.msg(data.msg);
                 }
             }
@@ -110,12 +110,11 @@
         /*表单提交后接收后台返回的数据*/
         $("#registerForm").ajaxForm(function (data) {
 
-            if(data){
-                layer.msg("注册成功",{icon:6});
+            if (data) {
+                layer.msg("注册成功", {icon: 6});
                 //window.location.href="hello.html"
-            }
-            else if(!data){
-                layer.msg("注册失败",{icon:5});
+            } else if (!data) {
+                layer.msg("注册失败", {icon: 5});
             }
         })
     })

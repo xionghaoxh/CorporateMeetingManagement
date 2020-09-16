@@ -54,7 +54,7 @@ layui.use('table', function () {
                     type: 'POST',
                     dataType: 'json',
                     success: function (data) {
-                        if (data.code===0){
+                        if (data.code === 0) {
                             obj.del();
                         }
                         layer.msg(data.msg);

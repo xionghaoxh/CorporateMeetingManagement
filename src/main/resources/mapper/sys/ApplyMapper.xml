@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ws.mapper.ApplyMapper">
+<mapper namespace="com.xh.mapper.ApplyMapper">
     <sql id="baseColumn">
         id,roomId,roomName,roomNo,startTime,endTime,approver,appTime,approverId,applicant,applicantId,status
     </sql>
-    <select id="applyListByPage" resultType="com.ws.bean.Sys_apply">
+    <select id="applyListByPage" resultType="com.xh.entity.Sys_apply">
         select
         <include refid="baseColumn"/>
         from sys_apply
@@ -15,7 +15,7 @@
             applicantId=#{userId}
         </where>
     </select>
-    <select id="pendingListByPage" resultType="com.ws.bean.Sys_apply">
+    <select id="pendingListByPage" resultType="com.xh.entity.Sys_apply">
         select
         <include refid="baseColumn"/>
         from sys_apply
@@ -26,7 +26,7 @@
             approverId=#{userId}
         </where>
     </select>
-    <select id="applyedListByPage" resultType="com.ws.bean.Sys_apply">
+    <select id="applyedListByPage" resultType="com.xh.entity.Sys_apply">
         select
         <include refid="baseColumn"/>
         from sys_apply
@@ -36,7 +36,7 @@
             status regexp'1|6'
         </where>
     </select>
-    <select id="getLessThanNowApplying" resultType="com.ws.bean.Sys_apply">
+    <select id="getLessThanNowApplying" resultType="com.xh.entity.Sys_apply">
         select
         <include refid="baseColumn"/>
         from sys_apply
@@ -45,7 +45,7 @@
             and status= 0;
         </where>
     </select>
-    <select id="getLessThanNowApplyed" resultType="com.ws.bean.Sys_apply">
+    <select id="getLessThanNowApplyed" resultType="com.xh.entity.Sys_apply">
         select
         <include refid="baseColumn"/>
         from sys_apply
@@ -54,7 +54,7 @@
             and status= 1;
         </where>
     </select>
-    <update id="updateRoom" parameterType="string" >
+    <update id="updateRoom" parameterType="string">
         update sys_apply set
         roomName=#{roomName},
         roomNo=#{roomNo}

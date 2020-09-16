@@ -67,13 +67,14 @@
                     </div>
                     <div class="form-bottom">
                         <div class="form-group">
-                            <input type="text" name="username" placeholder="用户名"  id="username"      class="form-control">
+                            <input type="text" name="username" placeholder="用户名" id="username" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" placeholder="密码" id="password" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="confirmPassword" placeholder="确认密码" id="confirmPassword" class="form-control">
+                            <input type="password" name="confirmPassword" placeholder="确认密码" id="confirmPassword"
+                                   class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="text" name="nickname" placeholder="昵称" id="nickname" class="form-control">
@@ -87,7 +88,7 @@
                         <div class="form-group">
                             <input type="text" name="address" placeholder="联系地址" id="address" class="form-control">
                         </div>
-                        <button type="submit"  class="btn btn-success btn-lg btn-block">提交</button>
+                        <button type="submit" class="btn btn-success btn-lg btn-block">提交</button>
                     </div>
                 </form>
             </div>
@@ -115,8 +116,8 @@
 </html>
 <script>
     var layer;
-    layui.use('layer',function () {
-        layer=layui.layer;
+    layui.use('layer', function () {
+        layer = layui.layer;
     })
     $(function () {
         /*表单验证*/
@@ -127,7 +128,7 @@
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            fields:{
+            fields: {
                 username: {
                     //threshold: 6,//当用户名超过6位时才发送ajax请求进行用户名校验
                     message: 'The username is not valid',
@@ -141,7 +142,7 @@
                             message: '用户名长度为2至12位'
                         },
                         regexp: {
-                                regexp: /^[a-zA-Z0-9]+$/,
+                            regexp: /^[a-zA-Z0-9]+$/,
                             message: '用户名不能包含中文和特殊字符'
                         },
                         remote: {
@@ -154,9 +155,9 @@
                         }
                     }
                 },
-                password:{
-                   message:'password not null',
-                    validators :{
+                password: {
+                    message: 'password not null',
+                    validators: {
                         notEmpty: {
                             message: '密码不能为空'
                         },
@@ -197,9 +198,9 @@
                         },
                     }
                 },
-                tellphone:{
+                tellphone: {
                     //threshold: 11,//当邮箱超过6位时才发送ajax请求进行邮箱校验
-                    validators:{
+                    validators: {
                         notEmpty: {
                             message: '手机号不能为空'
                         },
@@ -223,12 +224,11 @@
         /*表单验证结束位置*/
         /*表单提交后接收后台返回的数据*/
         $("#registerForm").ajaxForm(function (data) {
-            if(true==data){
-                layer.msg("注册成功",{icon:6});
-                window.location.href="/login/index";
-            }
-            else if(false == data){
-                layer.msg("注册失败",{icon:5});
+            if (true == data) {
+                layer.msg("注册成功", {icon: 6});
+                window.location.href = "/login/index";
+            } else if (false == data) {
+                layer.msg("注册失败", {icon: 5});
             }
         })
     });

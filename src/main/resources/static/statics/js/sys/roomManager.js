@@ -74,10 +74,10 @@ layui.use('table', function () {
             });
         }
         /*申请会议室*/
-        else if(layEvent==='apply'){
-            if (eventData.status!==2){
+        else if (layEvent === 'apply') {
+            if (eventData.status !== 2) {
                 layer.msg("该会议室未空闲");
-            }else{
+            } else {
                 layer.open({
                     type: 2,
                     title: '申请会议室',
@@ -164,7 +164,7 @@ function editRoomDo() {
             data: $("#editRoomForm").serialize(),
             success: function (data) {
                 layer.msg(data.msg);
-                if (data.code===0){
+                if (data.code === 0) {
                     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                     parent.layer.close(index);
                     //parent.layer.table.reload('roomLayerDataTable',{page:{curr:1}})
@@ -174,6 +174,7 @@ function editRoomDo() {
         });
     }
 }
+
 /**
  * 申请会议室
  */
@@ -247,14 +248,14 @@ function validetorRoom(obj) {
                     }
                 }
             },
-            startTime:{
+            startTime: {
                 validators: {
                     notEmpty: {
                         message: '开始时间不能为空'
                     }
                 }
             },
-            approverComfirm:{
+            approverComfirm: {
                 validators: {
                     notEmpty: {
                         message: '审批人不能为空'
@@ -268,7 +269,7 @@ function validetorRoom(obj) {
 /**
  * 选择负责人
  */
-function selectPrincipal(obj,nameObj,objId) {
+function selectPrincipal(obj, nameObj, objId) {
     var roomData = {};
     var pidInput = obj;//$('#principal');
     var nameInput = nameObj;//$('input[name=principal]');
@@ -338,17 +339,17 @@ function selectPrincipal(obj,nameObj,objId) {
 }
 
 /*时间选择*/
-layui.use('laydate',function () {
+layui.use('laydate', function () {
     var laydate = layui.laydate;
     //日期范围
     laydate.render({
         elem: '#startTime'
-        ,type:'datetime'
+        , type: 'datetime'
         //,format: 'yyyy-MM-dd HH:mm:ss|yyyy-MM-dd HH:mm:ss'
-        ,range: true
-        ,min: 0
-        ,max: '2099-12-31 00:00:00'
-        ,change:function (value) {
+        , range: true
+        , min: 0
+        , max: '2099-12-31 00:00:00'
+        , change: function (value) {
             $("#startTime").val(value).trigger('input');
 
         }

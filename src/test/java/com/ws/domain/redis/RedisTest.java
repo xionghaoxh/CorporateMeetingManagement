@@ -1,6 +1,6 @@
 package com.ws.domain.redis;
 
-import com.ws.common.utils.MD5Utils;
+import com.xh.common.utils.MD5Utils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,16 +17,19 @@ public class RedisTest {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private RedisTemplate redisTemplate;
+
     @Test
-    public void stringRedisTest(){
-        stringRedisTemplate.opsForValue().set("abc","cba");
-        Assert.assertEquals("cba",stringRedisTemplate.opsForValue().get("abc"));
+    public void stringRedisTest() {
+        stringRedisTemplate.opsForValue().set("abc", "cba");
+        Assert.assertEquals("cba", stringRedisTemplate.opsForValue().get("abc"));
     }
+
     @Test
-    public void redisTempTest(){
+    public void redisTempTest() {
         String abc = redisTemplate.opsForValue().get("abc").toString();
         System.err.println(abc);
     }
+
     /*
          1
         202cb962ac59075b964b07152d234b70
@@ -41,12 +44,12 @@ public class RedisTest {
         30cd2f99101cdd52cc5fda1e996ee137
      */
     @Test
-    public  void testMd5(){
-        String pwd="123";
+    public void testMd5() {
+        String pwd = "123";
 
-        for (int i=0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             System.err.println(i);
-            pwd= MD5Utils.encode(pwd);
+            pwd = MD5Utils.encode(pwd);
             System.err.println(pwd);
         }
         System.err.println(pwd);

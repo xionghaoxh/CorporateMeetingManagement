@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ws.mapper.RoomMapper">
+<mapper namespace="com.xh.mapper.RoomMapper">
     <sql id="baseColumn">
         id,roomName,roomNo,createTime,status,capacity,principal,principalId,remark
     </sql>
@@ -14,7 +14,7 @@
             #{id}
         </foreach>
     </update>
-    <select id="roomListByPage" resultType="com.ws.bean.Sys_room">
+    <select id="roomListByPage" resultType="com.xh.entity.Sys_room">
         select
         <include refid="baseColumn"/>
         from sys_room
@@ -30,16 +30,18 @@
         delete from sys_user_role where userId =#{userId};
     </delete>
 
-    <select id="getAssUserData" resultType="com.ws.bean.Sys_User" parameterType="string">
-        select id,username,nickname,disabled from sys_user where id not in (select userId from sys_user_role where roleId =#{roleId})
+    <select id="getAssUserData" resultType="com.xh.entity.Sys_User" parameterType="string">
+        select id,username,nickname,disabled from sys_user where id not in (select userId from sys_user_role where
+        roleId =#{roleId})
     </select>
 
-    <select id="getAssedUserData" parameterType="string" resultType="com.ws.bean.Sys_User">
-        select id,username,nickname,disabled from sys_user where id in (select userId from sys_user_role where roleId =#{roleId})
+    <select id="getAssedUserData" parameterType="string" resultType="com.xh.entity.Sys_User">
+        select id,username,nickname,disabled from sys_user where id in (select userId from sys_user_role where roleId
+        =#{roleId})
     </select>
     <select id="checkRoomStatus" resultType="java.lang.Integer">
         select
-            status
+        status
         from sys_room
         <where>
             id=#{roomId}

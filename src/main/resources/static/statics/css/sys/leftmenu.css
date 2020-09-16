@@ -1,36 +1,43 @@
-.menuBody{
+.menuBody {
     background-color: black;
     opacity: 0.8;
     padding: 0;
 }
-._menu{
+
+._menu {
     position: relative;
 }
-.menu{
+
+.menu {
     position: absolute;
     text-align: center;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     /*height: 200px;*/
 }
-.menu p{
+
+.menu p {
     color: #FFFFFF;
 }
+
 .menu p:hover {
     color: #0077da;
 }
-.menu p:active{
+
+.menu p:active {
     color: red;
 }
 
-.menuFont{
+.menuFont {
     color: #ffffff;
 }
-.leftMenu{
+
+.leftMenu {
     width: 160px !important;
     opacity: 0.8;
 }
-.leftMenu li a:focus{
+
+.leftMenu li a:focus {
     background-color: #5FB878 !important;
 }

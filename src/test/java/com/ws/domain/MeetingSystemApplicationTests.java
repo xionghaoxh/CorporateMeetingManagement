@@ -1,7 +1,6 @@
 package com.ws.domain;
 
-import com.ws.bean.Sys_User;
-import com.ws.mapper.UserMapper;
+import com.xh.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

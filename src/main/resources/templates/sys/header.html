@@ -14,17 +14,18 @@
             <!--<div class="layui-layout-right">
                 <button class="layui-btn layui-btn-danger" onclick="logout()">退出</button>
             </div>-->
-            <a class="tuichu" href="javascript:void (0)" onclick="logout()"><i class="layui-icon layui-icon-close-fill"></i>退出</a>
+            <a class="tuichu" href="javascript:void (0)" onclick="logout()"><i
+                    class="layui-icon layui-icon-close-fill"></i>退出</a>
         </div>
     </div>
 </div>
 <script>
     function logout() {
         $.ajax({
-            url:'/login/logout',
-            type:'post',
-            success:function (data) {
-                location.href='/login/index';
+            url: '/login/logout',
+            type: 'post',
+            success: function (data) {
+                location.href = '/login/index';
             }
         })
 

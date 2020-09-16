@@ -16,8 +16,8 @@ layui.use('table', function () {
             /*,{ title: '序号',templet:'#tableIndex', sort: true,align:'center'}*/
             , {field: 'recordName', title: '会议名称', align: 'center'}
             , {field: 'host', title: '主持人', sort: true, align: 'center'}
-            , {field: 'startTime', title: '会议开始时间',sort: true, align: 'center'}
-            , {field: 'endTime', title: '会议结束时间',sort: true, align: 'center'}
+            , {field: 'startTime', title: '会议开始时间', sort: true, align: 'center'}
+            , {field: 'endTime', title: '会议结束时间', sort: true, align: 'center'}
             , {field: 'roomName', title: '会议室', minWidth: 100, align: 'center'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center'}
         ]]
@@ -61,7 +61,7 @@ layui.use('table', function () {
             });
         }
         /*查看详情*/
-        else if (layEvent ==='detail'){
+        else if (layEvent === 'detail') {
             layer.open({
                 type: 2,
                 title: '会议记录详情',
@@ -147,7 +147,7 @@ function editRecordDo() {
             data: $("#editRecordData").serialize(),
             success: function (data) {
                 layer.msg(data.msg);
-                if (data.code===0){
+                if (data.code === 0) {
                     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                     parent.layer.close(index);
                     //parent.layer.table.reload('recordLayerDataTable',{page:{curr:1}})
@@ -199,21 +199,21 @@ function validetorrecord(obj) {
                     }
                 }
             },
-            startTime:{
+            startTime: {
                 validators: {
                     notEmpty: {
                         message: '会议时长不能为空'
                     }
                 }
             },
-            approverComfirm:{
+            approverComfirm: {
                 validators: {
                     notEmpty: {
                         message: '主持人不能为空'
                     }
                 }
             },
-            content:{
+            content: {
                 validators: {
                     notEmpty: {
                         message: '会议内容不能为空'
@@ -227,7 +227,7 @@ function validetorrecord(obj) {
 /**
  * 选择会议主持人、会务专员、参会人员
  */
-function selectRecordUser(obj,nameObj,objId,type) {
+function selectRecordUser(obj, nameObj, objId, type) {
     var recordData = {};
     var pidInput = obj;//$('#principal');
     var nameInput = nameObj;//$('input[name=principal]');
@@ -281,15 +281,15 @@ function selectRecordUser(obj,nameObj,objId,type) {
                 switch (obj.event) {
                     case 'getCheckData':
                         var data = checkStatus.data;
-                        var title=new Array();
-                        var id=new Array();
-                        if (data.length>1){
+                        var title = new Array();
+                        var id = new Array();
+                        if (data.length > 1) {
                             for (var i = 0; i < data.length; i++) {
-                                title[i]=data[i].nickname;
-                                id[i]=data[i].id;
+                                title[i] = data[i].nickname;
+                                id[i] = data[i].id;
                             }
                             recordData = {title: title.join(','), id: id.join(',')};
-                        }else{
+                        } else {
                             recordData = {title: data[0].nickname, id: data[0].id};
                         }
                         layer.close(index);
@@ -313,7 +313,7 @@ function selectRecordUser(obj,nameObj,objId,type) {
  * @param objId
  * @param type
  */
-function selectApplyed(obj,nameObj,objId,type) {
+function selectApplyed(obj, nameObj, objId, type) {
     var recordData = {};
     var pidInput = obj;//$('#principal');
     var nameInput = nameObj;//$('input[name=principal]');
@@ -382,15 +382,15 @@ function selectApplyed(obj,nameObj,objId,type) {
 }
 
 /*时间选择*/
-layui.use('laydate',function () {
+layui.use('laydate', function () {
     var laydate = layui.laydate;
     //日期范围
     laydate.render({
         elem: '#_startTime'
-        ,type:'datetime'
+        , type: 'datetime'
         //,format: 'yyyy-MM-dd HH:mm:ss|yyyy-MM-dd HH:mm:ss'
-        ,range: true
-        ,change:function (value) {
+        , range: true
+        , change: function (value) {
             $("#_startTime").val(value).trigger('input');
         }
     });

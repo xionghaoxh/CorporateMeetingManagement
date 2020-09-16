@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ws.mapper.RoleMapper">
+<mapper namespace="com.xh.mapper.RoleMapper">
     <sql id="baseColumn">
-       id,rolename,role,description,disabled
+        id,rolename,role,description,disabled
     </sql>
-    <select id="roleListDataByPage" resultType="com.ws.bean.Sys_Role">
+    <select id="roleListDataByPage" resultType="com.xh.entity.Sys_Role">
         select
         <include refid="baseColumn"/>
         from sys_role
@@ -21,17 +21,17 @@
     </delete>
 
     <insert id="saveAssUser">
-        insert into sys_user_role(userId,roleId) values
-        <foreach collection="ids" item="userId" separator=",">
-            (#{userId},#{roleId})
-        </foreach>
-    </insert>
+    insert into sys_user_role(userId,roleId) values
+    <foreach collection="ids" item="userId" separator=",">
+        (#{userId},#{roleId})
+    </foreach>
+</insert>
 
     <delete id="delAssUserByRoleId" parameterType="string">
         delete from sys_user_role where roleId =#{roleId}
     </delete>
 
-    <select id="getPermByRoleId" parameterType="string" resultType="com.ws.bean.Sys_Permission">
+    <select id="getPermByRoleId" parameterType="string" resultType="com.xh.entity.Sys_Permission">
         select
         id,name,permission,pid,isHasChildren,resourceType,disabled,url
         from
@@ -40,17 +40,17 @@
         in
         (select perId from sys_role_per where roleId=#{roleId})
     </select>
-    <select id="findRolesByUserId" parameterType="string" resultType="com.ws.bean.Sys_Role">
+    <select id="findRolesByUserId" parameterType="string" resultType="com.xh.entity.Sys_Role">
         SELECT
-            t1.id,
-            t1.description,
-            t1.disabled,
-            t1.role,
-            t1.rolename
+        t1.id,
+        t1.description,
+        t1.disabled,
+        t1.role,
+        t1.rolename
         FROM
-            sys_role t1
-            INNER JOIN sys_user_role t2 ON t1.id = t2.roleId
-            AND t1.disabled=0 and  t2.userId = #{userId}
+        sys_role t1
+        INNER JOIN sys_user_role t2 ON t1.id = t2.roleId
+        AND t1.disabled=0 and t2.userId = #{userId}
     </select>
 
     <insert id="saveAssPerm">

@@ -4,10 +4,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://192.168.3.20:3306/meeting_system?useUnicode=true&amp&characterEncoding=UTF8&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/meeting_system?useUnicode=true&amp&characterEncoding=UTF8&allowMultiQueries=true&serverTimezone=UTC
     username: root
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
     ###  数据源类别阿里巴巴的DruidDataSource
     type: com.alibaba.druid.pool.DruidDataSource
     ### 初始化大小，最小，最大
@@ -43,7 +43,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.ws.bean
+  type-aliases-package: com.xh.entity
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

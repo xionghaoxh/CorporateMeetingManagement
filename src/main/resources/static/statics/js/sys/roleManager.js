@@ -1,6 +1,6 @@
 var layer;
-layui.use('layer',function () {
-    layer= layui.layer;
+layui.use('layer', function () {
+    layer = layui.layer;
 });
 
 /*角色列表*/
@@ -17,13 +17,15 @@ layui.use('table', function () {
             , {field: 'rolename', title: '角色名称', align: 'center'}
             , {field: 'role', title: '角色标识', sort: true, align: 'center'}
             , {field: 'description', title: '角色说明', align: 'center'}
-            , {field: 'disabled', title: '是否禁用', align: 'center',templet:function (data) {
-                    if (data.disabled){
+            , {
+                field: 'disabled', title: '是否禁用', align: 'center', templet: function (data) {
+                    if (data.disabled) {
                         return '<span class="layui-badge layui-bg-red">是</span>'
-                    }else{
+                    } else {
                         return '<span class="layui-badge layui-bg-green">否</span>'
                     }
-                }}
+                }
+            }
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center'}
         ]]
         , page: true
@@ -45,7 +47,7 @@ layui.use('table', function () {
                     type: 'POST',
                     dataType: 'json',
                     success: function (data) {
-                        if (data.code==0){
+                        if (data.code == 0) {
                             obj.del();
                         }
                         layer.msg(data.msg);
@@ -65,7 +67,7 @@ layui.use('table', function () {
             });
         }
         /*分配用户*/
-        else if (layEvent==='assUser'){
+        else if (layEvent === 'assUser') {
             layer.open({
                 type: 2,
                 title: '分配用户',
@@ -76,7 +78,7 @@ layui.use('table', function () {
             });
         }
         /*分配权限*/
-        else if(layEvent==='assPerm'){
+        else if (layEvent === 'assPerm') {
             layer.open({
                 type: 2,
                 title: '分配权限',
@@ -126,17 +128,17 @@ function addRole() {
 /*新增角色*/
 function submitRoleDataForm() {
     $.ajax({
-        url:'/v1/api/sys/role/addRoleDo',
-        type:'post',
-        data:$("#roleData").serialize(),
+        url: '/v1/api/sys/role/addRoleDo',
+        type: 'post',
+        data: $("#roleData").serialize(),
         dataType: 'json',
-        success:function (data) {
+        success: function (data) {
             layer.msg(data.msg);
-            if (data.code==0){
+            if (data.code == 0) {
                 var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                 //关闭layer弹窗之后重新加载layui表格
                 parent.layer.close(index);
-                parent.location.reload('roleLayerDataTable',{page:{curr:1}});
+                parent.location.reload('roleLayerDataTable', {page: {curr: 1}});
             }
 
         }
@@ -147,33 +149,34 @@ function submitRoleDataForm() {
 /*跳转编辑角色界面*/
 function sysRole() {
     $.ajax({
-       url:'/v1/api/sys/role/editRole',
-       success:function (data) {
+        url: '/v1/api/sys/role/editRole',
+        success: function (data) {
 
-           
-       } 
+
+        }
     });
 }
+
 /*提交修改角色表单*/
 function editRoleDo() {
     $.ajax({
-       url:'/v1/api/sys/role/editRoleDo',
-       type:'post',
-       dataType:'json',
-       data:$("#editRoleForm").serialize(),
-       success:function (data) {
-           layer.msg(data.msg);
-           if (data.code==0){
-               //关闭弹窗，刷新表格
-               var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-               //关闭layer弹窗之后重新加载layui表格
-               parent.layer.close(index);
-               parent.location.reload('roleLayerDataTable',{page:{curr:1}});
-           }
-       },
-       error:function (data) {
-           layer.msg(data.msg);
-       }
+        url: '/v1/api/sys/role/editRoleDo',
+        type: 'post',
+        dataType: 'json',
+        data: $("#editRoleForm").serialize(),
+        success: function (data) {
+            layer.msg(data.msg);
+            if (data.code == 0) {
+                //关闭弹窗，刷新表格
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                //关闭layer弹窗之后重新加载layui表格
+                parent.layer.close(index);
+                parent.location.reload('roleLayerDataTable', {page: {curr: 1}});
+            }
+        },
+        error: function (data) {
+            layer.msg(data.msg);
+        }
     });
 }
 

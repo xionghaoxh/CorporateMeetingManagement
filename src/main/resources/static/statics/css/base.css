@@ -1,14 +1,17 @@
-body{
+body {
     width: 100%;
     height: 100%;
 }
-a{
+
+a {
     text-decoration: none;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
 }
-.clearBootstrapCol{
+
+.clearBootstrapCol {
     padding: 0;
     margin: 0;
 }

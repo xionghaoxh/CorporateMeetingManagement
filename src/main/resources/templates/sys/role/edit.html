@@ -7,32 +7,36 @@
 </head>
 <body>
 <div class="container">
-    <div class="row" >
+    <div class="row">
         <div class="formBody">
             <form class="form-inline layui-form" action="#" type="post" id="editRoleForm">
                 <input type="hidden" id="id" name="id" value="${sysRole.id}">
                 <div class="col-xs-12 form-group">
                     <label for="rolename" class="col-xs-2 control-label">角色名称</label>
                     <div class="col-xs-10">
-                        <input type="text" class="form-control" id="rolename" name="rolename" value="${sysRole.rolename}" placeholder="${sysRole.rolename}">
+                        <input type="text" class="form-control" id="rolename" name="rolename"
+                               value="${sysRole.rolename}" placeholder="${sysRole.rolename}">
                     </div>
                 </div>
                 <div class="col-xs-12 form-group">
                     <label for="role" class="col-xs-2 control-label">角色标识</label>
                     <div class="col-xs-10">
-                        <input type="text" class="form-control" id="role" name="role" value="${sysRole.role}" placeholder="${sysRole.role}">
+                        <input type="text" class="form-control" id="role" name="role" value="${sysRole.role}"
+                               placeholder="${sysRole.role}">
                     </div>
                 </div>
                 <div class="col-xs-12 form-group">
                     <label for="description" class="col-xs-2 control-label">角色说明</label>
                     <div class="col-xs-10">
-                        <input type="text" class="form-control"  id="description" name="description" value="${sysRole.description}" placeholder="${sysRole.description}">
+                        <input type="text" class="form-control" id="description" name="description"
+                               value="${sysRole.description}" placeholder="${sysRole.description}">
                     </div>
                 </div>
                 <div class="col-xs-12 form-group">
                     <label for="disabled" class="col-xs-2 control-label">是否禁用</label>
                     <div class="col-xs-10" style="text-align: left">
-                        <input type="checkbox" class="form-control"  id="disabled" name="disabled" value="1" title="禁用" <%if(sysRole.disabled){%>checked<%}%>>
+                        <input type="checkbox" class="form-control" id="disabled" name="disabled" value="1" title="禁用"
+                        <%if(sysRole.disabled){%>checked<%}%>>
                     </div>
                 </div>
             </form>
